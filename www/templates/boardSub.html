@@ -1,0 +1,11 @@
+<ion-view view-title="{{title}}">
+    <ion-content data-ng-init="doRefresh()">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item class="card" ng-repeat="x in boardSub" href="#/app/topics/{{x.id}}&{{x.name}}">
+                <h2>{{ x.name }}</h2>             
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

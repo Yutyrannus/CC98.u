@@ -1,0 +1,13 @@
+<ion-view view-title="板块列表">
+    <ion-content data-ng-init="doRefresh()">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+        </ion-refresher>
+        <div class="list">
+            <ion-item class="card boardRoot" ng-repeat="boardRoot in boardRoots" href="#/app/boardSub/{{boardRoot.id}}&{{boardRoot.name}}">
+                <h2>{{ boardRoot.name }}<h2>
+            </ion-item>
+        </div>
+    </ion-content>
+</ion-view>
+
+

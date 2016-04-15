@@ -1,0 +1,48 @@
+.menu .bar.bar-header.expanded {
+    background-image: url('../img/material-graphite.jpg');
+    background-size: 120%;
+    background-position: 0%;
+    transition: all .5s ease-in-out;
+}
+/*
+.previous-title{
+    display: none !important;
+}
+*/
+#fab{
+    right: 20px;
+    bottom: 20px;
+    position: fixed;
+}
+
+.card img{
+    box-shadow: none;
+    display: inline;
+}
+
+.quoteMaxHeightDiv{
+  padding: 10px 20px !important;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 5px solid #11c1f3;
+  background:#f9f9f9;
+}
+
+.card-header{
+    padding-bottom: 10px;
+}
+
+img{
+    width:initial!important;
+}
+
+.boardRoot{
+    display: inline-block;
+    width: 47.5%;
+    margin: 4px;
+}
+
+
+.item-complex .item-content, .item-radio .item-content{
+    padding-right: 24px;
+}

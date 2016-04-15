@@ -1,0 +1,21 @@
+<ion-view view-title="个人信息">
+    <ion-content>
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item>用户名称： {{user.name}}</ion-item>
+            <ion-item>用户头衔： {{user.title}}</ion-item>
+            <ion-item>文章总数： {{user.postCount}}</ion-item>
+            <ion-item>威望： {{user.prestige}}</ion-item>
+            <ion-item>门派： {{user.faction}}</ion-item>
+            <ion-item>用户组： {{user.groupName}}</ion-item>
+            <ion-item>注册时间： {{user.registerTime}}</ion-item>
+            <ion-item>性别： {{user.gender}}</ion-item>
+            <ion-item>等级： {{user.level}}</ion-item>
+            <ion-item>邮件地址： {{user.emailAddress}}</ion-item>
+            <ion-item>主页地址： {{user.homePageUrl}}</ion-item>
+            <ion-item>生日： {{user.birthday}}</ion-item>
+            <ion-item>QQ： {{user.qq}}</ion-item>
+        </ion-list>       
+    </ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view view-title="{{topicTitle}}">
+    <button id="fab" class="button button-positive button-fab  topicfab" ng-click="doRefresh()">
+        <i class="icon ion-refresh"></i>
+    </button>
+    <ion-content  data-ng-init="doRefresh()">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+        </ion-refresher>
+        
+        <ion-item class="card ink ink-dark item-text-wrap" ng-repeat="x in topic" href="">
+            <div class="card-header">{{x.floor}}楼</div>
+            
+            <pre id={{topicId}}topic{{x.floor-1}} ng-bind-html="x.content | to_trusted"></pre>
+            <div class="card-footer text-right">
+                <i class="icon ion-clock"></i> {{ x.time}}
+                <div class="pull-left">
+                    <i class="icon ion-person"></i> {{ x.userName ||'匿名' }}
+                </div>
+            </div>
+        </ion-item>
+        
+        <ion-infinite-scroll ng-if="topic.length % 10 == 0" on-infinite="loadMore()" distance="10%">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>
