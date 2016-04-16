@@ -1,14 +1,13 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-positive">
-        <ion-nav-back-button >
+        <ion-nav-back-button class="no-text">
             
         </ion-nav-back-button>
 
             <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-                </button>
-                
+                <!--<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>-->             
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
@@ -24,25 +23,25 @@
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
                 <ion-item menu-close ng-click="cc98Login()" ng-if="token == undefined">
-                    登录
+                    <i class="icon ion-person menu-icon"></i>&emsp;&emsp;登录
                 </ion-item>
                 <ion-item menu-close ng-click="logOut()" ng-if="token != undefined">
-                    注销
+                    <i class="icon ion-person menu-icon"></i>&emsp;&emsp;注销
                 </ion-item>
                 <ion-item menu-close href="#/app/myBoard">
-                    我的版面
+                    <i class="icon ion-home menu-icon"></i>&emsp;&emsp;我的版面
                 </ion-item>
                 <ion-item menu-close href="#/app/new">
-                    查看新帖
+                    <i class="icon ion-leaf menu-icon"></i>&emsp;&emsp;查看新帖
                 </ion-item>
                 <ion-item menu-close href="#/app/hot">
-                    热门话题
+                    <i class="icon ion-flame menu-icon"></i>&emsp;&emsp;热门话题
                 </ion-item>
                 <ion-item menu-close href="#/app/boardRoot">
-                    板块列表
+                    <i class="icon ion-ios-browsers menu-icon"></i>&emsp;&emsp;板块列表
                 </ion-item>
                 <ion-item menu-close href="#/app/me">
-                    个人信息
+                    <i class="icon ion-ios-paper menu-icon"></i>&emsp;&emsp;个人信息
                 </ion-item>
             </ion-list>
         </ion-content>

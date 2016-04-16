@@ -18,7 +18,7 @@
             </div>
         </ion-item>
         
-        <ion-infinite-scroll ng-if="topic.length % 10 == 0" on-infinite="loadMore()" distance="10%">
+        <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
         </ion-infinite-scroll>
 
     </ion-content>

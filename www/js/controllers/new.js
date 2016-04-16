@@ -1,27 +1,32 @@
 angular.module('cc98')
 
-.controller('newCtrl', function($scope, $http) {
-    var page = 0;
-  $scope.doRefresh = function() {
-    $http.get('http://api.cc98.org/topic/new?from=' + page * 10 + '&to=' + (page * 10 + 9))
-     .success(function(newItems) {
-       $scope.new = newItems;
-     })
-     .finally(function() {
-       // Stop the ion-refresher from spinning
-       $scope.$broadcast('scroll.refreshComplete');
-     });
-  };
-  
-  $scope.loadMore = function() {
-            page++;
-            $http.get('http://api.cc98.org/topic/new/?from=' + page * 10 + '&to=' + (page * 10 + 9))
-                .success(function(newItems) {
-                    $scope.topic = $scope.topic.concat(newItems);
+  .controller('newCtrl', function ($scope, $http) {
+    var page;
+    $scope.doRefresh = function () {
+      $scope.loadingShow();
+      page = 0;
+      $http.get('http://api.cc98.org/topic/new?from=0&to=9')
+        .then(function successCallBack(response) {
+          $scope.news = response.data;
+        }, function errorCallback(response) {
+          alert(response.data.message);
+        })
+        .finally(function () {
+          $scope.$broadcast('scroll.refreshComplete');
+          $scope.loadingHide();
+        });
+    };
 
-                })
-                .finally(function() {
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
-                });
-        };
-});
+    $scope.loadMore = function () {
+      page++;
+      $http.get('http://api.cc98.org/topic/new/?from=' + page * 10 + '&to=' + (page * 10 + 9))
+        .then(function successCallBack(response) {
+          $scope.news = $scope.news.concat(response.data);
+        }, function errorCallback(response) {
+          alert(response.data.message);
+        })
+        .finally(function () {
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+    };
+  });

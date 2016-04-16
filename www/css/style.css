@@ -46,3 +46,7 @@ img{
 .item-complex .item-content, .item-radio .item-content{
     padding-right: 24px;
 }
+
+.menu-icon{
+    font-size: 150%;
+}
