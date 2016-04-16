@@ -23,8 +23,11 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-                <ion-item menu-close ng-click="cc98Login()">
+                <ion-item menu-close ng-click="cc98Login()" ng-if="token == undefined">
                     登录
+                </ion-item>
+                <ion-item menu-close ng-click="logOut()" ng-if="token != undefined">
+                    注销
                 </ion-item>
                 <ion-item menu-close href="#/app/myBoard">
                     我的版面
