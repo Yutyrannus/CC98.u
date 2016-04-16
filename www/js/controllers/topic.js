@@ -1,12 +1,13 @@
 var app = angular.module('cc98')
 
 app.controller('topicCtrl',
-    function($scope, $http, $stateParams, $sce, $rootScope) {
+    function($scope, $http, $stateParams, $sce, $rootScope, $ionicModal) {
         $scope.topicTitle = $stateParams.topicTitle;
         var topicId = $stateParams.id;
         $scope.topicId = topicId;
         var page = 0;
         $scope.doRefresh = function() {
+            $scope.topic = {};
             $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=0&to=9', 
             {headers:{'Authorization':'Bearer '+$rootScope.token}})
                 .success(function(newItems) {
@@ -41,6 +42,33 @@ app.controller('topicCtrl',
                 $scope.topic[i].content = ubbcode($scope.topic[i].content);               
             }
             
+        };
+        
+                
+        //回帖
+        $scope.postData = {};
+        $ionicModal.fromTemplateUrl('templates/post.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+
+        $scope.closePost = function () {
+            $scope.modal.hide();
+        };
+
+        $scope.post = function () {
+            $scope.modal.show();
+        };
+        $scope.doPost = function () {
+            $http.post('http://api.cc98.org/post/topic/' + topicId, $scope.postData,
+                { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
+                .then(function successCallback(response) {
+                    alert("回帖成功！");
+                    $scope.closePost();
+                }, function errorCallback(response) {
+                    alert(response.data.message);
+                })
         };
 
     });

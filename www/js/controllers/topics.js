@@ -41,15 +41,14 @@ app.controller('topicsCtrl',
         $scope.post = function () {
             $scope.modal.show();
         };
-        console.log($scope.postData);
         $scope.doPost = function () {
-            $http.post('http://api.cc98.org/topic/board/' + topicsId,
-                { data: $scope.postData},
+            $http.post('http://api.cc98.org/topic/board/' + topicsId, $scope.postData,
                 { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
                 .then(function successCallback(response) {
                     alert("发帖成功！");
+                    $scope.closePost();
                 }, function errorCallback(response) {
-                    alert(response);
+                    alert(response.data.message);
                 })
         };
     });

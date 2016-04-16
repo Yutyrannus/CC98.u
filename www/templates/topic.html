@@ -1,6 +1,6 @@
 <ion-view view-title="{{topicTitle}}">
-    <button id="fab" class="button button-positive button-fab  topicfab" ng-click="doRefresh()">
-        <i class="icon ion-refresh"></i>
+    <button id="fab" class="button button-positive button-fab  topicfab" ng-click="post()">
+        <i class="icon ion-compose"></i>
     </button>
     <ion-content  data-ng-init="doRefresh()">
         <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
