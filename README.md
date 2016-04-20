@@ -14,22 +14,29 @@
 ![3](http://139.129.28.8/imgres/ss3.jpg)
 
 ## 开发
-1. clone该git或下载zip包
-2. 安装node.js
-3. 安装ionic和cordova：
+1.clone该git或下载zip包
+2.安装node.js
+3.安装ionic和cordova：
+
 ```bash
 npm install -g ionic cordova
 ```
-4. 网页测试：（无法登录）
+
+4.网页测试：（无法登录）
+
 ```bash
 ionic serve
 ```
-5. 安装对应平台的SDK
-6. 生成对应平台的文件：（platform为平台名称，可以用ionic platform list命令查看支持的平台）
+
+5.安装对应平台的SDK
+
+6.生成对应平台的文件：（platform为平台名称，可以用ionic platform list命令查看支持的平台）
+
 ```bash
 ionic platform add [platform]
 ```
-7. 运行（模拟器或真机）
+
+7.运行（模拟器或真机）
 ```bash
 ionic run [platform]
 ```
