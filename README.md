@@ -15,7 +15,9 @@
 
 ## 开发
 1.clone该git或下载zip包
+
 2.安装node.js
+
 3.安装ionic和cordova：
 
 ```bash
