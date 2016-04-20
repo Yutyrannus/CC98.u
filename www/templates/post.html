@@ -1,9 +1,12 @@
 <ion-modal-view>
 	<ion-header-bar class="bar-balanced">
+		<button class="button button-clear" ng-click="closePost()">
+          <i class="icon ion-close"></i>
+      </button>
 		<h1 class="title">发表主题</h1>
 		<div class="buttons">
-			<button class="button button-clear" ng-click="closePost()">
-          <i class="icon ion-close"></i>
+			<button class="button button-clear" ng-click="doPost()">
+          <i class="icon ion-checkmark"></i>
       </button>
 		</div>
 	</ion-header-bar>
@@ -17,10 +20,7 @@
 				<label class="item item-input">          
           <textarea type="text" placeholder="内容" ng-model="postData.content" rows="20">
 					</textarea>
-        </label>
-				<label class="item">
-          <button class="button button-block button-positive" type="submit">发表</button>
-        </label>
+        </label>				
 			</div>
 		</form>
 	</ion-content>

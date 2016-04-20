@@ -15,7 +15,7 @@ app.controller('topicsCtrl',
         .then(function successCallback(response) {
           $scope.topics = response.data;
         }, function errorCallback(response) {
-          console.log(response);
+          alert(response.data.message);
         })
         .finally(function () {
           $scope.$broadcast('scroll.refreshComplete');

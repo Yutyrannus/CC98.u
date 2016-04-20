@@ -9,7 +9,6 @@ angular.module('cc98')
        $scope.hot = newItems;
      })
      .finally(function() {
-       // Stop the ion-refresher from spinning
        $scope.$broadcast('scroll.refreshComplete');
      });
   };
