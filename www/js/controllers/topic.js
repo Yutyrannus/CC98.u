@@ -82,6 +82,7 @@ app.controller('topicCtrl',
         .then(function successCallback(response) {
           alert("回帖成功！");
           $scope.closePost();
+          $scope.loadMore();
         }, function errorCallback(response) {
           alert(response.data.message);
         })

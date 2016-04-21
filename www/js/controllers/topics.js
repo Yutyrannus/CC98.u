@@ -58,6 +58,7 @@ app.controller('topicsCtrl',
         .then(function successCallback(response) {
           alert("发帖成功！");
           $scope.closePost();
+          $scope.doRefresh();
         }, function errorCallback(response) {
           alert(response.data.message);
         })

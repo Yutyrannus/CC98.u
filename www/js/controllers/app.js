@@ -8,28 +8,29 @@ angular.module('cc98.controllers', ['ngCordovaOauth'])
       }, function (error) {
         alert("Error : " + error);
       });
-
-      $scope.getMe = function () {
-        $http.get("http://api.cc98.org/me", { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
-          .success(function (newItems) {
-            $rootScope.user = newItems;
-          });
-      }
     };
+
+    //获取个人信息
+    $scope.getMe = function () {
+      $http.get("http://api.cc98.org/me", { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
+        .success(function (newItems) {
+          $rootScope.user = newItems;
+        });
+    }
 
     $scope.logOut = function () {
       $rootScope.token = undefined;
       $rootScope.user = undefined;
     };
-    
+
     //载入动画
-        $scope.loadingShow = function () {
-            $ionicLoading.show({
-                template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
-            });
-        };
-        $scope.loadingHide = function () {
-            $ionicLoading.hide();
-        };
-        
+    $scope.loadingShow = function () {
+      $ionicLoading.show({
+        template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+      });
+    };
+    $scope.loadingHide = function () {
+      $ionicLoading.hide();
+    };
+
   });
