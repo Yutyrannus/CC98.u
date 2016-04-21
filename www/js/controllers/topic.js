@@ -35,7 +35,6 @@ app.controller('topicCtrl',
           $scope.topic = $scope.topic.concat(newItems.data);
           $scope.ubb();
           $scope.error = false;
-          console.log(newItems.data);
           if(newItems.data.length == 0){
             $scope.error = true;
           }
