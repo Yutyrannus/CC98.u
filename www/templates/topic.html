@@ -2,7 +2,7 @@
     <button id="fab" class="button button-positive button-fab  topicfab" ng-click="post()">
         <i class="icon ion-compose"></i>
     </button>
-    <ion-content  data-ng-init="doRefresh()">
+    <ion-content data-ng-init="doRefresh()">
         <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
         </ion-refresher>
         
@@ -21,6 +21,5 @@
         
         <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
         </ion-infinite-scroll>
-
     </ion-content>
 </ion-view>

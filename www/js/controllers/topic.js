@@ -15,6 +15,7 @@ app.controller('topicCtrl',
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .success(function (newItems) {
           $scope.topic = newItems;
+          $rootScope.topicTitle = $scope.topic[0].title; //储存标题
           $scope.ubb();
         })
         .error(function (newItems) {
@@ -25,7 +26,6 @@ app.controller('topicCtrl',
           $scope.loadingHide();
         });
     };
-
 
     $scope.loadMore = function () {
       page++; 
