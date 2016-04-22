@@ -5,9 +5,9 @@
 	var emotnum=72;
 
 	var isSimple=false;
-	var emotdir='emot/';
+	var emotdir='http://www.cc98.org/emot/';
 
-	var icondir='images/files/';
+	var icondir='http://www.cc98.org/images/files/';
 	var tdclass;
     
 /*
