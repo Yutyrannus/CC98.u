@@ -5,7 +5,6 @@
     <ion-content data-ng-init="doRefresh()">
         <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
         </ion-refresher>
-        
         <ion-item class="card ink ink-dark item-text-wrap" ng-repeat="topicItem in topic" href="">
             <div class="card-header">{{topicItem.floor}}楼 &emsp;
                 <strong>{{topicItem.title}}</strong>
@@ -18,8 +17,8 @@
                 </div>
             </div>
         </ion-item>
-        
         <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
         </ion-infinite-scroll>
+
     </ion-content>
 </ion-view>

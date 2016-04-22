@@ -6,7 +6,7 @@
         <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
         </ion-refresher>
 
-        <ion-item class="card  ink ink-dark item-text-wrap" ng-repeat="x in topics" href="#/app/topic/{{x.id}}">
+        <ion-item class="card  ink ink-dark item-text-wrap" ng-repeat="x in topics" href="#/app/topic/{{x.id}}&{{x.title}}">
 
             {{ x.title }}
             <div class="card-footer text-right">

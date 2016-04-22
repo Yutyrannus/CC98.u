@@ -93,7 +93,7 @@ angular.module('cc98', ['ionic', 'cc98.controllers'])
   })
   
   .state('app.topics', {
-    url: '/topics/:id',
+    url: '/topics/:id&:boardTitle',
     views: {
       'menuContent': {
         templateUrl: 'templates/topics.html',
