@@ -27,6 +27,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.cc98112461"
+        },
+        "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "com.ionicframework.cc98112461"
         }
     },
     "dependent_plugins": {}

@@ -27,6 +27,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "CC98.u"
+        },
+        "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "CC98.u"
         }
     },
     "dependent_plugins": {}

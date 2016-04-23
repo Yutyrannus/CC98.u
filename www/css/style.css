@@ -46,7 +46,3 @@ img{
 .menu-icon{
     font-size: 150%;
 }
-
-.platform-android .scroll-bar-indicator .scroll-bar-fade-out {
-  opacity: 100;  
-}

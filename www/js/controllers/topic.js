@@ -1,7 +1,7 @@
 var app = angular.module('cc98')
 
 app.controller('topicCtrl',
-  function ($scope, $http, $stateParams, $sce, $rootScope, $ionicModal, $ionicNavBarDelegate, $timeout) {
+  function ($scope, $http, $stateParams, $rootScope, $ionicModal, $ionicNavBarDelegate, $timeout) {
     $scope.topic = {};
     $scope.error = undefined;
     $scope.topicTitle = $stateParams.topicTitle;
@@ -91,6 +91,6 @@ app.controller('topicCtrl',
           alert(response.data.message);
         })
     };
-
+    
   });
 

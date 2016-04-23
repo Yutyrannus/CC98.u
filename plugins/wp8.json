@@ -27,6 +27,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "{75928cc0-037e-11e6-9a97-b1ad5a673030}"
+        },
+        "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "{71d6c1f0-04aa-11e6-8bd5-11c4016b472a}"
         }
     },
     "dependent_plugins": {}

@@ -1,5 +1,5 @@
 <ion-view view-title="{{boardTitle}}">
-    <button id="fab" class="button button-positive button-fab  topicfab" ng-click="post()">
+    <button id="fab" class="button button-positive button-fab ink topicfab" ng-click="post()">
         <i class="icon ion-compose"></i>
     </button>
     <ion-content data-ng-init="doRefresh()">
@@ -7,7 +7,6 @@
         </ion-refresher>
 
         <ion-item class="card  ink ink-dark item-text-wrap" ng-repeat="x in topics" href="#/app/topic/{{x.id}}&{{x.title}}">
-
             {{ x.title }}
             <div class="card-footer text-right">
                 <i class="icon ion-ios-chatbubble"></i> {{ x.replyCount}}/{{x.hitCount}}

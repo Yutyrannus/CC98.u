@@ -63,4 +63,5 @@ app.controller('topicsCtrl',
           alert(response.data.message);
         })
     };
+    
   });
