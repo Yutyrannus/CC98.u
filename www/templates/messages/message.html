@@ -1,0 +1,24 @@
+<ion-view view-title="短消息">
+    <button id="fab" class="button button-positive button-fab ink topicfab" ng-click="post()">
+        <i class="icon ion-paper-airplane"></i>
+    </button>
+    <ion-content data-ng-init="doRefresh()">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <ion-item class="card  ink ink-dark item-text-wrap" href="">
+            <div class="card-header">
+                <h1>{{message.title}}</h1> 发件人：&emsp; <b>{{message.senderName || '系统'}}</b><br> 收件人：&emsp; <b>{{message.receiverName}}</b><br>
+                <span>
+                <i class="icon ion-clock"></i> {{ message.sendTime}}
+                </span>
+                <hr>
+            </div>
+            <div>
+                <pre id={{topicId}}topic{{message.floor-1}} ng-bind-html="message.content | to_trusted"></pre>
+            </div>
+        </ion-item>
+        <ion-infinite-scroll ng-if="topics.length % 10 == 0" on-infinite="loadMore()" distance="5%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

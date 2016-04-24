@@ -46,3 +46,11 @@ img{
 .menu-icon{
     font-size: 150%;
 }
+
+.unReadReceive{
+  background-color: rgba(169, 255, 173, 0.61);
+}
+
+.unReadSend{
+  background-color: rgba(193, 188, 243, 0.43);
+}

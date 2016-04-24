@@ -151,7 +151,46 @@ angular.module('cc98', ['ionic',
       }
     }
   })
+
+  .state('app.receive', {
+    url: '/receive',
+    views: {
+      'menuContent':{
+        templateUrl: 'templates/messages/receive.html',
+        controller: 'receiveCtrl'      
+      }
+    }
+  })
   
+  .state('app.send', {
+    url: '/send',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/messages/send.html',
+        controller: 'sendCtrl'
+      }
+    }
+  })  
+  
+  .state('app.chat', {
+    url: '/chat',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/messages/chat.html',
+        controller: 'chatCtrl'
+      }
+    }
+  })
+   
+  .state('app.message', {
+    url: '/message/:messageId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/messages/message.html',
+        controller: 'messageCtrl'
+      }
+    }
+  })
   ;
     
   $urlRouterProvider.otherwise('/app/boardRoot');

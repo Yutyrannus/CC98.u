@@ -1,0 +1,35 @@
+    <ion-view title="发件箱">
+
+      <ion-content has-header="true" padding="true" data-ng-init="doRefresh()">
+        
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+        </ion-refresher>
+        
+        <ion-item class="card  ink ink-dark item-text-wrap" ng-class="{unReadSend: !send.isRead}" ng-repeat="send in sends" href="#/app/message/{{send.id}}">
+            {{ send.title }}
+            <div class="card-footer text-right">
+                <i class="icon ion-clock"></i> {{send.sendTime}}
+
+                <div class="pull-left">
+                    <i class="icon ion-person"></i> {{ send.receiverName ||'系统' }}
+                </div>
+            </div>
+        </ion-item>
+        
+        <ion-infinite-scroll ng-if="sends.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
+        </ion-infinite-scroll>
+
+      </ion-content>
+
+      <div class="tabs tabs-icon-only tabs-positive">
+        <a nav-clear class="tab-item disable-user-behavior" title="Home" nav-clear ui-sref="app.receive">
+          <i class="icon ion-archive"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+        <a nav-clear class="tab-item disable-user-behavior active" title="Chat" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="app.send">
+          <i class="icon ion-android-open"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+        <a nav-clear class="tab-item disable-user-behavior" title="Drink" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="app.chat">
+          <i class="icon ion-chatboxes"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+      </div>
+  </ion-view>
