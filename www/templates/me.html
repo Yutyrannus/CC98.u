@@ -10,7 +10,7 @@
             <ion-item>门派： {{user.faction}}</ion-item>
             <ion-item>用户组： {{user.groupName}}</ion-item>
             <ion-item>注册时间： {{user.registerTime}}</ion-item>
-            <ion-item>性别： {{user.gender}}</ion-item>
+            <ion-item>性别： <span ng-bind-html="user.gender | gender"></span></ion-item>
             <ion-item>等级： {{user.level}}</ion-item>
             <ion-item>邮件地址： {{user.emailAddress}}</ion-item>
             <ion-item>主页地址： {{user.homePageUrl}}</ion-item>

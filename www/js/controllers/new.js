@@ -3,7 +3,6 @@ angular.module('cc98')
   .controller('newCtrl', function ($scope, $http) {
     var page;
     $scope.doRefresh = function () {
-      $scope.loadingShow();
       page = 0;
       $http.get('http://api.cc98.org/topic/new?from=0&to=9')
         .then(function successCallBack(response) {
@@ -13,7 +12,6 @@ angular.module('cc98')
         })
         .finally(function () {
           $scope.$broadcast('scroll.refreshComplete');
-          $scope.loadingHide();
         });
     };
 

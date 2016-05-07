@@ -11,7 +11,7 @@
             </div>
             <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | to_trusted"></pre>
             <div class="card-footer text-right">
-                <i class="icon ion-clock"></i> {{ topicItem.time}}
+                <i class="icon ion-clock"></i> {{ topicItem.time | timeAgo}}
                 <div class="pull-left">
                     <i class="icon ion-person"></i> {{ topicItem.userName ||'匿名' }}
                 </div>

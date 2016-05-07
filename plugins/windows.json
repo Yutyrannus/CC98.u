@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "CC98.u"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "CC98.u"
         },
@@ -26,9 +29,6 @@
             "PACKAGE_NAME": "CC98.u"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "CC98.u"
-        },
-        "com.telerik.plugins.nativepagetransitions": {
             "PACKAGE_NAME": "CC98.u"
         }
     },

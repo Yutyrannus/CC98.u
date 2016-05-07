@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.cc98112461" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.cc98112461" version="0.0.1" xmlns="http://www.w3.org/ns\widgets" xmlns:cdv="http://cordova.apache.org/ns\1.0">
   <name>CC98.u</name>
   <description>
-        An Ionic Framework and Cordova project.
+        CC98客户端
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="geek418@gmail.com" href="http://example.com.com/">
+      Yutyrannus
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -16,6 +16,7 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="windows-target-version" value="10.0"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
@@ -72,5 +73,17 @@
     <splash src="resources\ios\splash\Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources\ios\splash\Default~iphone.png" width="320" height="480"/>
   </platform>
+    <platform name="windows">
+        <icon src="resources/windows/storelogo.png" target="StoreLogo" />
+        <icon src="resources/windows/Square44x44Logo.png" target="Square44x44Logo" />
+        <icon src="resources/windows/Square71x71Logo.png" target="Square71x71Logo" />
+        <icon src="resources/windows/Square150x150Logo.png" target="Square150x150Logo" />
+        <icon src="resources/windows/Square310x310Logo.png" target="Square310x310Logo" />
+        <icon src="resources/windows/Wide310x150Logo.png" target="Wide310x150Logo" />
+        <splash src="resources/windows/splashscreen.png" width="620" height="300"/>
+        <preference name="SplashScreenBackgroundColor" value="transparent"/>
+        <preference name="BackgroundColor" value="transparent"/>
+        <preference name="ShortName" value="CC98.u"/>
+    </platform>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
 </widget>

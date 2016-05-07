@@ -8,6 +8,9 @@ angular.module('cc98')
           $scope.myBoardIds = newItems;
           $scope.getBoardName();
         })
+        .error(function (response) {
+          alert(response.message);
+        })
         .finally(function () {
           $scope.$broadcast('scroll.refreshComplete');
         });

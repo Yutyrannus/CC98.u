@@ -8,11 +8,11 @@ app.controller('topicCtrl',
     var topicId = $stateParams.id;
     $scope.topicId = topicId;
     var page;
-    
+
     $scope.setTitle = function () {
       $ionicNavBarDelegate.title($scope.topic[0].title);
     }
-    
+
     $scope.doRefresh = function () {
       $scope.loadingShow();
       $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=0&to=9',
@@ -31,7 +31,7 @@ app.controller('topicCtrl',
         });
     };
 
-    
+
     $scope.loadMore = function () {
       page = parseInt($scope.topic.length / 10);
       $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=' + $scope.topic.length + '&to=' + (page * 10 + 9),
@@ -55,11 +55,19 @@ app.controller('topicCtrl',
 
     //UBB代码解析
     $scope.ubb = function () {
-      var i;
+      var i, j;
       for (i = parseInt(($scope.topic.length - 1) / 10) * 10; i < $scope.topic.length; i++) {
         $scope.topic[i].content = $scope.topic[i].content.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>");
-        $scope.topic[i].content = ubbcode($scope.topic[i].content);
-        $scope.topic[i].content = ubbcode($scope.topic[i].content);
+        var currubb = $scope.topic[i].content;
+        var preubb = currubb;
+        for (j = 0; j < 10; j++) {
+          if ((currubb = ubbcode(preubb)) != preubb){
+            preubb = currubb;
+          }
+          else
+            break;
+          $scope.topic[i].content = currubb;
+        }
       }
 
     };
@@ -91,6 +99,6 @@ app.controller('topicCtrl',
           alert(response.data.message);
         })
     };
-    
+
   });
 
