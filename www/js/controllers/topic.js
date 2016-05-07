@@ -20,7 +20,7 @@ app.controller('topicCtrl',
         .success(function (newItems) {
           $scope.topic = newItems;
           $scope.ubb();
-          $scope.setTitle();
+          getUser();
         })
         .error(function (newItems) {
           alert("载入出错！");
@@ -39,6 +39,7 @@ app.controller('topicCtrl',
         .then(function successCallback(newItems) {
           $scope.topic = $scope.topic.concat(newItems.data);
           $scope.ubb();
+          getUser();
           $scope.error = false;
           if (newItems.data.length == 0) {
             $scope.error = true;
@@ -61,7 +62,7 @@ app.controller('topicCtrl',
         var currubb = $scope.topic[i].content;
         var preubb = currubb;
         for (j = 0; j < 10; j++) {
-          if ((currubb = ubbcode(preubb)) != preubb){
+          if ((currubb = ubbcode(preubb)) != preubb) {
             preubb = currubb;
           }
           else
@@ -72,6 +73,21 @@ app.controller('topicCtrl',
 
     };
 
+    //获取用户信息（头像，性别等）
+    var getUser = function () {
+      var num;
+      for (num = parseInt(($scope.topic.length - 1) / 10) * 10; num < $scope.topic.length; num++) {
+        if ($scope.topic[num].userId)
+          getUserInfo(num);
+      };
+    }
+
+    var getUserInfo = function (num) {
+      $http.get('http://api.cc98.org/user/' + $scope.topic[num].userId)
+        .success(function (newItems) {
+          $scope.topic[num].userInfo = newItems;
+        });
+    }
 
     //回帖
     $scope.postData = {};

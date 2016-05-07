@@ -31,9 +31,9 @@ angular.module('cc98', [
   .filter('gender', function () {
     return function (gender) {
       if (gender == 0)
-        return "<i class=\"icon ion-male\"></i>";
+        return "<i class=\"icon ion-male positive\"></i>";
       else if(gender == 1)
-        return "<i class=\"icon ion-female\"></i>";
+        return "<i class=\"icon ion-female pink\"></i>";
         else
           return undefined;
     };

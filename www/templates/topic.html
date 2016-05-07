@@ -1,24 +1,34 @@
 <ion-view view-title="{{topicTitle}}">
-    <button id="fab" class="button button-positive button-fab ink topicfab" ng-click="post()">
+  <button id="fab" class="button button-positive button-fab ink topicfab" ng-click="getUser()">
         <i class="icon ion-compose"></i>
     </button>
-    <ion-content data-ng-init="doRefresh()">
-        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
-        </ion-refresher>
-        <ion-item class="card ink ink-dark item-text-wrap" ng-repeat="topicItem in topic" href="">
-            <div class="card-header">{{topicItem.floor}}楼 &emsp;
-                <strong>{{topicItem.title}}</strong>
-            </div>
-            <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | to_trusted"></pre>
-            <div class="card-footer text-right">
-                <i class="icon ion-clock"></i> {{ topicItem.time | timeAgo}}
-                <div class="pull-left">
-                    <i class="icon ion-person"></i> {{ topicItem.userName ||'匿名' }}
-                </div>
-            </div>
-        </ion-item>
-        <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
-        </ion-infinite-scroll>
+  <ion-content data-ng-init="doRefresh()">
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-item class="card list ink ink-dark item-text-wrap" ng-repeat="topicItem in topic" href="">
+      <div class="card-header" ng-if="topicItem.title">
+        <strong>{{topicItem.title}}</strong>
+      </div>
+      <div class="item item-avatar" ng-if="topicItem.userInfo.portraitUrl">
+        <img src="{{topicItem.userInfo.portraitUrl || 'img/user.jpg'}}">
+        <h2>{{ topicItem.userName ||'匿名' }}&nbsp;&nbsp;
+          <span ng-bind-html="topicItem.userInfo.gender | gender"></span>
+          </h2>
+      </div>
+      <div class="card-header" ng-if="!topicItem.userInfo.portraitUrl">
+        <i class="icon ion-person"></i> {{ topicItem.userName ||'匿名' }}
+      </div>
+      <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | to_trusted"></pre>
+      </div>
+      <div class="card-footer text-right">
+        <i class="icon ion-clock"></i> {{ topicItem.time | timeAgo}}
+        <div class="pull-left">
+          第{{topicItem.floor}}楼
+        </div>
+      </div>
+    </ion-item>
+    <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
+    </ion-infinite-scroll>
 
-    </ion-content>
+  </ion-content>
 </ion-view>
