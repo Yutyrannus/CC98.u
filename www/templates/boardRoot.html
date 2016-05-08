@@ -5,8 +5,8 @@
     <div class="list">
       <ion-item class="card boardRoot" ng-repeat="boardRoot in boardRoots" href="#/app/boardSub/{{boardRoot.id}}&{{boardRoot.name}}">
         <h2>{{ boardRoot.name }}
-          <span class="pull-right todayPostCount">
-             <i class="icon ion-ios-chatbubble"></i>&nbsp;{{boardRoot.todayPostCount}}
+          <span class="label pull-right" ng-class="labelColor(boardRoot.todayPostCount)">
+             {{boardRoot.todayPostCount}}
           </span>
           <h2> 
             </ion-item>

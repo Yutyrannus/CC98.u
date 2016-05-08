@@ -47,9 +47,8 @@ ionic platform add [platform]
 ionic run [platform]
 ```
 
-## TO DO LIST:
+## ToDo LIST:
 - 在浏览帖子界面的跳页，引用，站短等
-- filter: 新窗口中打开图片，链接等
+- 新窗口中打开图片，链接等
 - 实现长期登录
-- 头像显示
 - 界面，动画，提示等进一步修改
