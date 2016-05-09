@@ -1,4 +1,4 @@
-var app = angular.module('cc98')
+﻿var app = angular.module('cc98.controllers')
 
 app.controller('topicCtrl',
   function ($scope, $http, $stateParams, $rootScope, $ionicModal, $ionicNavBarDelegate, $timeout) {

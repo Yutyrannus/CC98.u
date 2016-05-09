@@ -1,4 +1,4 @@
-var app = angular.module('cc98')
+﻿var app = angular.module('cc98.controllers')
 
 app.controller('boardSubCtrl',
   function ($scope, $http, $stateParams) {

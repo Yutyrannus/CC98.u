@@ -1,6 +1,6 @@
-'use strict';
+﻿'use strict';
 
-angular.module('cc98')
+angular.module('cc98.controllers')
 
 .controller('hotCtrl', function($scope, $http) {
   $scope.doRefresh = function() {

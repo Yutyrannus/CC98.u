@@ -1,4 +1,4 @@
-var app = angular.module('cc98')
+﻿var app = angular.module('cc98')
 
 app.controller('messageCtrl',
   function ($scope, $http, $rootScope, $stateParams, $ionicModal) {

@@ -1,4 +1,4 @@
-angular.module('cc98')
+﻿angular.module('cc98.controllers')
   .controller('myBoardCtrl',
   function ($scope, $http, $rootScope) {
     $scope.doRefresh = function () {

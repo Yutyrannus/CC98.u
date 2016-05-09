@@ -1,4 +1,4 @@
-angular.module('cc98', [
+﻿angular.module('cc98', [
   'ionic',
   'cc98.controllers',
   'ionic-native-transitions'

@@ -15,19 +15,19 @@
                                 redirect_uri = options.redirect_uri;
                             }
                         }
-                        var browserRef = window.open('https://login.cc98.org/OAuth/Authorize?client_id=' + clientId + '&redirect_uri=http://localhost/callback&response_type=token&scope=' + appScope.join(" "), '_blank', 'location=no');
+                        var browserRef = window.open('https://login.cc98.org/OAuth/Authorize?client_id=' + clientId + '&redirect_uri=http://localhost/callback&response_type=code&scope=' + appScope.join(" "), '_blank', 'location=no');
                         browserRef.addEventListener('loadstart', function(event) {
                             if((event.url).indexOf(redirect_uri) === 0) {
                             	browserRef.removeEventListener("exit",function(event){});
                             	browserRef.close();
-                                var callbackResponse = (event.url).split("#")[1];
+                                var callbackResponse = (event.url).split("?")[1];
                                 var responseParameters = (callbackResponse).split("&");
                                 var parameterMap = [];
                                 for(var i = 0; i < responseParameters.length; i++) {
                                     parameterMap[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
                                 }
-                                if(parameterMap.access_token !== undefined && parameterMap.access_token !== null) {
-                                    deferred.resolve({ access_token: parameterMap.access_token, expires_in: parameterMap.expires_in });
+                                if(parameterMap.code !== undefined && parameterMap.code !== null) {
+                                    deferred.resolve({ code: parameterMap.code });
                                 } else {
                                     deferred.reject("登录出错");
                                 }
