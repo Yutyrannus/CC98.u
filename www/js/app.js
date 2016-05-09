@@ -38,7 +38,8 @@
           return undefined;
     };
   })
-  
+
+  //插件ionic-native-transitions设置
   .config(function ($ionicNativeTransitionsProvider) {
     $ionicNativeTransitionsProvider.setDefaultOptions({
       duration: 400, // in milliseconds (ms), default 400,
@@ -54,14 +55,14 @@
   })
   .config(function ($ionicNativeTransitionsProvider) {
     $ionicNativeTransitionsProvider.setDefaultTransition({
-      type: 'slide',
-      direction: 'left'
+      type: 'fade',
+      duration: 300
     });
   })
   .config(function ($ionicNativeTransitionsProvider) {
     $ionicNativeTransitionsProvider.setDefaultBackTransition({
-      type: 'slide',
-      direction: 'right'
+      type: 'fade',
+      duration: 300
     });
   })
 
@@ -140,7 +141,7 @@
         views: {
           'menuContent': {
             templateUrl: 'templates/me.html',
-            controller: 'loginCtrl'
+            controller: 'meCtrl'
           }
         }
       })

@@ -35,7 +35,7 @@
     var redirect_uri = 'http://localhost/callback';
 
     $scope.cc98Login = function () {
-      $cordovaOauth.cc98("f68e417e-2ac6-4462-a090-9b0ca701565d", ["all*"])
+      $cordovaOauth.cc98(client_id, ["all*"])
         .then(function (result) {
           getToken(result.code);
         }, function (error) {
@@ -125,7 +125,10 @@
     $scope.showNavBar = function (show) {
       $ionicNavBarDelegate.showBar(show);
     }
-
+    
+    //
+    $scope.theme = storage.get('theme') || 'positive';
+    
     if (storage.get('expiresTime'))
       if (Date.now() > storage.get('expiresTime'))
         refreshToken();

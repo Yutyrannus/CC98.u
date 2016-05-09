@@ -32,19 +32,29 @@ img{
     width:initial!important;
 }
 
-.boardRoot{
-    display: inline-block;
-    width: 47.5%;
-    margin: 4px;
+.item{
+  width: inherit;
+}
+.item-complex .item-content, .item-radio .item-content{
+    padding: 16px;
+}
+.platform-android .item-complex .item-content, .item-radio .item-content{
+    padding-right: 24px;
 }
 
-
-.item-complex .item-content, .item-radio .item-content{
-    padding-right: 24px;
+.boardRoot{
+    display: inline-block;
+    width: 48%;
+    margin: 4px;
+}
+.platform-android .boardRoot{
+  width: 47.5%;
 }
 
 .menu-icon{
     font-size: 150%;
+    vertical-align: middle;
+    margin: 0 10px 0 10px;
 }
 
 .unReadReceive{
@@ -139,10 +149,6 @@ img{
   background-color: #ec971f;
 }
 .label-danger {
-  background-color: #d9534f;
-}
-.label-danger[href]:hover,
-.label-danger[href]:focus {
   background-color: #c9302c;
 }
 .label-royal {
@@ -158,4 +164,6 @@ img{
   background-color: deeppink;
 }
 
-
+.radio-text{
+  vertical-align: middle;
+}

@@ -1,6 +1,6 @@
 ﻿var app = angular.module('cc98.controllers')
 
-app.controller('loginCtrl',
+app.controller('meCtrl',
   function ($scope, $rootScope, $stateParams, $location, $http, storage) {
 
     $scope.doRefresh = function () {

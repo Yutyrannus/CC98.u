@@ -1,16 +1,26 @@
 ﻿<ion-view title="设置">
-<ion-header-bar align-title="left" class="bar-balanced">
-</ion-header-bar>
-<ion-content>
-    <ion-list>
-      <ion-radio ng-model="theme" ng-value="'positive'" ng-change="changeTheme()">蓝色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'calm'" ng-change="changeTheme()">青色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'royal'" ng-change="changeTheme()">紫色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'balanced'" ng-change="changeTheme()">绿色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'energized'" ng-change="changeTheme()">黄色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'bar-assertive'" ng-change="changeTheme()">红色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'dark'" ng-change="changeTheme()">黑色</ion-radio>
-      <ion-radio ng-model="theme" ng-value="'stable'" ng-change="changeTheme()">灰色</ion-radio>
-    </ion-list>
-</ion-content>
+  <ion-list>
+    <ion-radio></ion-radio>
+    <ion-radio class="positive" ng-model="themeColor" ng-value="'positive'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">蓝色</span>
+    </ion-radio>
+    <ion-radio class="calm" ng-model="themeColor" ng-value="'calm'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">青色</span>
+    </ion-radio>
+    <ion-radio class="royal" ng-model="themeColor" ng-value="'royal'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">紫色</span>
+    </ion-radio>
+    <ion-radio class="balanced" ng-model="themeColor" ng-value="'balanced'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">绿色</span>
+    </ion-radio>
+    <ion-radio class="energized" ng-model="themeColor" ng-value="'energized'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">黄色</span>
+    </ion-radio>
+    <ion-radio class="assertive" ng-model="themeColor" ng-value="'assertive'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">红色</span>
+    </ion-radio>
+    <ion-radio class="dark" ng-model="themeColor" ng-value="'dark'" ng-change="changeTheme()">
+      <i class="icon ion-record menu-icon"></i><span class="radio-text">黑色</span>
+    </ion-radio>
+  </ion-list>
 </ion-view>
