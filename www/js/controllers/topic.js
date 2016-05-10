@@ -18,7 +18,6 @@ app.controller('topicCtrl',
     var replyCount = parseInt($stateParams.replyCount);
     var topicId = $stateParams.id;
     $scope.topicId = topicId;
-    var page;
 
     $scope.setTitle = function () {
       $ionicNavBarDelegate.title($scope.topic[0].title);
@@ -45,8 +44,8 @@ app.controller('topicCtrl',
 
     //加载更多帖子
     $scope.loadMore = function () {
-      page = parseInt($scope.topic.length / 10);
-      $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=' + $scope.topic.length + '&to=' + (page * 10 + 9),
+      var topicLength = $scope.topic[0].floor + $scope.topic.length -1;
+      $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=' + topicLength + '&to=' + (topicLength + 9),
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(newItems) {
           $scope.topic = $scope.topic.concat(newItems.data);
@@ -78,7 +77,7 @@ app.controller('topicCtrl',
       $ionicPopup.prompt({
         title: '输入要跳转的楼层',
         template: '共' + (replyCount+1) + '楼',
-        inputPlaceholder: '楼层',
+        inputPlaceholder: '',
         cancelText: '取消',
         okText: '确定',
         okType: 'button-' + $scope.theme
@@ -147,7 +146,7 @@ app.controller('topicCtrl',
 
     //回帖
     $scope.postData = {};
-    $ionicModal.fromTemplateUrl('templates/post.html', {
+    $ionicModal.fromTemplateUrl('templates/postTopic.html', {
       scope: $scope
     }).then(function (modal) {
       $scope.modal = modal;

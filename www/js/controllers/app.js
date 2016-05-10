@@ -57,8 +57,6 @@
         .success(function (response) {
           $rootScope.token = response.access_token;
           storage.set('access_token', response.access_token);
-          storage.set('expires_in', response.expires_in);
-          storage.set('expiresTime', response.expires_in * 1000 + Date.now());
           storage.set('refresh_token', response.refresh_token);
           getMe(response.access_token);
         })
@@ -81,9 +79,6 @@
           { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' } })
           .success(function (response) {
             $rootScope.token = response.access_token;
-            storage.set('access_token', response.access_token);
-            storage.set('expires_in', response.expires_in);
-            storage.set('expiresTime', response.expires_in * 1000 + Date.now());
             storage.set('refresh_token', response.refresh_token);
           })
           .error(function (response) {
@@ -106,8 +101,6 @@
       $rootScope.token = undefined;
       $rootScope.user = undefined;
       storage.remove('refresh_token');
-      storage.remove('expiresTime');
-      storage.remove('access_token');
       storage.remove('userInfo');
     };
 
@@ -126,15 +119,12 @@
       $ionicNavBarDelegate.showBar(show);
     }
     
-    //
+    //获取主题颜色
     $scope.theme = storage.get('theme') || 'positive';
     
-    if (storage.get('expiresTime'))
-      if (Date.now() > storage.get('expiresTime'))
+    //登录相关
+    if (storage.get('refresh_token'))
         refreshToken();
-
-    if (storage.get('access_token'))
-      $rootScope.token = storage.get('access_token');
 
     if (storage.get('userInfo'))
       $rootScope.user = storage.get('userInfo');
