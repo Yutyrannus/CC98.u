@@ -1,10 +1,21 @@
 ﻿var app = angular.module('cc98.controllers')
 
 app.controller('topicCtrl',
-  function ($scope, $http, $stateParams, $rootScope, $ionicModal, $ionicNavBarDelegate, $timeout) {
+  function (
+    $scope,
+    $http,
+    $stateParams,
+    $rootScope,
+    $ionicModal,
+    $ionicPopover,
+    $ionicPopup,
+    $ionicNavBarDelegate,
+    $ionicScrollDelegate ) {
+      
     $scope.topic = {};
-    $scope.error = undefined;
+    $scope.noMore = undefined;
     $scope.topicTitle = $stateParams.topicTitle;
+    var replyCount = parseInt($stateParams.replyCount);
     var topicId = $stateParams.id;
     $scope.topicId = topicId;
     var page;
@@ -13,13 +24,14 @@ app.controller('topicCtrl',
       $ionicNavBarDelegate.title($scope.topic[0].title);
     }
 
+    //刷新
     $scope.doRefresh = function () {
       $scope.loadingShow();
       $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=0&to=9',
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .success(function (newItems) {
           $scope.topic = newItems;
-          $scope.ubb();
+          ubb();
           getUser();
         })
         .error(function (newItems) {
@@ -31,22 +43,22 @@ app.controller('topicCtrl',
         });
     };
 
-
+    //加载更多帖子
     $scope.loadMore = function () {
       page = parseInt($scope.topic.length / 10);
       $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=' + $scope.topic.length + '&to=' + (page * 10 + 9),
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(newItems) {
           $scope.topic = $scope.topic.concat(newItems.data);
-          $scope.ubb();
+          ubb();
           getUser();
-          $scope.error = false;
+          $scope.noMore = false;
           if (newItems.data.length == 0) {
-            $scope.error = true;
+            $scope.noMore = true;
           }
         },
         function errorCallback(newItems) {
-          $scope.error = true;
+          $scope.noMore = true;
           alert("载入出错！");
         })
         .finally(function () {
@@ -54,8 +66,52 @@ app.controller('topicCtrl',
         })
     };
 
+    //回到顶部
+    $scope.scrollTop = function () {
+      $ionicScrollDelegate.scrollTop();
+      $scope.popover.hide();
+    };
+
+    //跳转到某楼
+    $scope.jump = function () {
+      $scope.popover.hide();
+      $ionicPopup.prompt({
+        title: '输入要跳转的楼层',
+        template: '共' + (replyCount+1) + '楼',
+        inputPlaceholder: '楼层',
+        cancelText: '取消',
+        okText: '确定',
+        okType: 'button-' + $scope.theme
+      }).then(function (floor) {
+        if (floor) {
+          jumpTo(floor);
+          $ionicScrollDelegate.scrollTop();
+        }
+      });
+    }
+
+    var jumpTo = function (floor) {
+      floor -= 1;
+      $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=' + floor + '&to=' + (floor + 9),
+        { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
+        .then(function successCallback(newItems) {
+          $scope.topic = newItems.data;
+          ubb();
+          getUser();
+          $scope.noMore = false;
+          if (newItems.data.length == 0) {
+            $scope.noMore = true;
+            alert("楼层不存在！");
+          }
+        },
+        function errorCallback(newItems) {
+          $scope.noMore = true;
+          alert("载入出错！");
+        })
+    }
+
     //UBB代码解析
-    $scope.ubb = function () {
+    var ubb = function () {
       var i, j;
       for (i = parseInt(($scope.topic.length - 1) / 10) * 10; i < $scope.topic.length; i++) {
         $scope.topic[i].content = $scope.topic[i].content.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>");
@@ -102,6 +158,7 @@ app.controller('topicCtrl',
     };
 
     $scope.post = function () {
+      $scope.popover.hide();
       $scope.modal.show();
     };
     $scope.doPost = function () {
@@ -114,6 +171,20 @@ app.controller('topicCtrl',
         }, function errorCallback(response) {
           alert(response.data.message);
         })
+    };
+
+    //popover
+    $ionicPopover.fromTemplateUrl('templates/popover/popover.html', {
+      scope: $scope
+    }).then(function (popover) {
+      $scope.popover = popover;
+    });
+
+    $scope.openPopover = function ($event) {
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function () {
+      $scope.popover.hide();
     };
 
   });

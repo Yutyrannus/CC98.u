@@ -1,6 +1,6 @@
 ﻿<ion-view view-title="{{topicTitle}}">
-  <button id="fab" class="button button-{{theme}} button-fab ink topicfab" ng-click="post()">
-        <i class="icon ion-compose"></i>
+  <button class="button button-{{theme}} button-fab ink topicfab" ng-click="popover.show()">
+        <i class="icon ion-plus-round"></i>
     </button>
   <ion-content data-ng-init="doRefresh()">
     <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </ion-item>
-    <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !error" on-infinite="loadMore()" distance="5%">
+    <ion-infinite-scroll ng-if="topic.length % 10 == 0 && !noMore" on-infinite="loadMore()" distance="5%">
     </ion-infinite-scroll>
 
   </ion-content>

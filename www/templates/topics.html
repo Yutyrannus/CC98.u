@@ -1,12 +1,12 @@
 ﻿<ion-view view-title="{{boardTitle}}">
-    <button id="fab" class="button button-{{theme}} button-fab ink topicfab" ng-click="post()">
+    <button class="button button-{{theme}} button-fab ink topicfab" ng-click="post()">
         <i class="icon ion-compose"></i>
     </button>
     <ion-content data-ng-init="doRefresh()">
         <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
         </ion-refresher>
 
-        <ion-item class="card  ink ink-dark item-text-wrap" ng-repeat="x in topics" href="#/app/topic/{{x.id}}&{{x.title}}">
+        <ion-item class="card  ink ink-dark item-text-wrap" ng-repeat="x in topics" href="#/app/topic/{{x.id}}&{{x.title}}&replyCount={{x.replyCount}}">
             {{ x.title }}
             <div class="card-footer text-right">                
                 <i class="icon ion-ios-chatbubble"></i> {{ x.replyCount}}/{{x.hitCount}}

@@ -5,10 +5,20 @@
     transition: all .5s ease-in-out;
 }
 
-#fab{
+.topicfab{
     right: 20px;
     bottom: 20px;
     position: fixed;
+}
+.fab-left{
+  right: 120px;
+}
+.fab-topleft{
+  right: 85px;
+  bottom: 85px;
+}
+.fab-top{
+  bottom: 120px;
 }
 
 .card img{
@@ -36,6 +46,7 @@ img{
   width: inherit;
 }
 .item-complex .item-content, .item-radio .item-content{
+    /*background-color: rgba(255, 255, 255, 0.6);*/
     padding: 16px;
 }
 .platform-android .item-complex .item-content, .item-radio .item-content{
@@ -167,3 +178,25 @@ img{
 .radio-text{
   vertical-align: middle;
 }
+
+.popover{
+  background-color: rgba(255,255,255,0);
+  position: fixed;
+  box-shadow: none;
+  bottom: -15px;
+  left: auto;
+  right: 0px;
+  top: auto;
+  width: 0px;
+  height: 0px;
+}
+
+.popup-body{
+  text-align:center;
+}
+/*
+ion-content.scroll-content.ionic-scroll.has-header{
+  background-color: rgba(49, 175, 213, 0.28);
+}
+*/
+
