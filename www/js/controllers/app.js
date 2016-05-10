@@ -1,7 +1,8 @@
 ﻿angular.module('cc98.controllers', [
   'ngCordovaOauth',
   'yaru22.angular-timeago',
-  'cc98.services'
+  'cc98.services',
+  'cc98.filters'
 ])
 
   .controller('AppCtrl', function ($scope, $rootScope, $http, $ionicModal, $timeout, $cordovaOauth, $ionicLoading, $ionicNavBarDelegate, $interval, timeAgo, storage) {

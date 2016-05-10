@@ -18,7 +18,7 @@
       <div class="card-header" ng-if="!topicItem.userInfo.portraitUrl">
         <i class="icon ion-person"></i> {{ topicItem.userName ||'匿名' }}
       </div>
-      <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | to_trusted"></pre>
+      <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | ubb"></pre>
       </div>
       <div class="card-footer text-right">
         <i class="icon ion-clock"></i> {{ topicItem.time | timeAgo}}

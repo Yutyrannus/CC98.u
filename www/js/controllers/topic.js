@@ -30,7 +30,6 @@ app.controller('topicCtrl',
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .success(function (newItems) {
           $scope.topic = newItems;
-          ubb();
           getUser();
         })
         .error(function (newItems) {
@@ -49,7 +48,6 @@ app.controller('topicCtrl',
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(newItems) {
           $scope.topic = $scope.topic.concat(newItems.data);
-          ubb();
           getUser();
           $scope.noMore = false;
           if (newItems.data.length == 0) {
@@ -95,7 +93,6 @@ app.controller('topicCtrl',
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(newItems) {
           $scope.topic = newItems.data;
-          ubb();
           getUser();
           $scope.noMore = false;
           if (newItems.data.length == 0) {
@@ -108,25 +105,6 @@ app.controller('topicCtrl',
           alert("载入出错！");
         })
     }
-
-    //UBB代码解析
-    var ubb = function () {
-      var i, j;
-      for (i = parseInt(($scope.topic.length - 1) / 10) * 10; i < $scope.topic.length; i++) {
-        $scope.topic[i].content = $scope.topic[i].content.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>");
-        var currubb = $scope.topic[i].content;
-        var preubb = currubb;
-        for (j = 0; j < 10; j++) {
-          if ((currubb = ubbcode(preubb)) != preubb) {
-            preubb = currubb;
-          }
-          else
-            break;
-          $scope.topic[i].content = currubb;
-        }
-      }
-
-    };
 
     //获取用户信息（头像，性别等）
     var getUser = function () {

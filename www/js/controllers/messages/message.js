@@ -21,13 +21,6 @@ app.controller('messageCtrl',
         });
     };
     
-    //UBB代码解析
-    $scope.ubb = function () {
-      $scope.message.content = $scope.message.content.replace(/\r\n/g, "<BR>").replace(/\n/g, "<BR>");
-      $scope.message.content = ubbcode($scope.message.content);
-      $scope.message.content = ubbcode($scope.message.content);
-    };
-    
     //获得站短对象
     $scope.getReceiverName = function (){
       if($scope.message.receiverName != $rootScope.user.name){

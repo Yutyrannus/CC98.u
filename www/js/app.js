@@ -22,23 +22,6 @@
     });
   })
 
-  //信任html代码，用于UBB代码显示
-  .filter('to_trusted', ['$sce', function ($sce) {
-    return function (text) {
-      return $sce.trustAsHtml(text);
-    };
-  }])
-  .filter('gender', function () {
-    return function (gender) {
-      if (gender == 0)
-        return "<i class=\"icon ion-male positive\"></i>";
-      else if(gender == 1)
-        return "<i class=\"icon ion-female pink\"></i>";
-        else
-          return undefined;
-    };
-  })
-
   //插件ionic-native-transitions设置
   .config(function ($ionicNativeTransitionsProvider) {
     $ionicNativeTransitionsProvider.setDefaultOptions({

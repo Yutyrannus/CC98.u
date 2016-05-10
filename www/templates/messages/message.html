@@ -15,7 +15,7 @@
                 <hr>
             </div>
             <div>
-                <pre id={{topicId}}topic{{message.floor-1}} ng-bind-html="message.content | to_trusted"></pre>
+                <pre id={{topicId}}topic{{message.floor-1}} ng-bind-html="message.content | ubb"></pre>
             </div>
         </ion-item>
         <ion-infinite-scroll ng-if="topics.length % 10 == 0" on-infinite="loadMore()" distance="5%">
