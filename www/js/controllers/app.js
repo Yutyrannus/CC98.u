@@ -83,7 +83,9 @@
             storage.set('refresh_token', response.refresh_token);
           })
           .error(function (response) {
-            alert("刷新令牌出错");
+            storage.remove('userInfo');
+            $rootScope.user = {};
+            alert("刷新令牌出错，请重新登录");            
           })
       }
     };
@@ -133,6 +135,6 @@
     //令牌到期后自动刷新
     var interval = $interval(function () {
       refreshToken();
-    }, 1140000);
+    }, 870000);
 
   });

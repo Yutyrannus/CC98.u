@@ -157,7 +157,7 @@ app.controller('topicCtrl',
       $scope.postData.content = "[quotex][b]以下是引用[i]" +
                                 ($scope.topic[index].userName || "匿名") +
                                 "在" +
-                                $scope.topic[index].time.replace("T", " ").replace("-", "/") +
+                                $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
                                 "[/i]的发言：[/b]" +
                                 "\r\n" +
                                 $scope.topic[index].content +
@@ -167,7 +167,7 @@ app.controller('topicCtrl',
       
     };
     
-    //popover
+    //popover，用于显示右下的多个fab按钮
     $ionicPopover.fromTemplateUrl('templates/popover/popover.html', {
       scope: $scope
     }).then(function (popover) {
