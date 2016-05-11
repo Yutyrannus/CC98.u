@@ -10,7 +10,7 @@
             <div class="card-header">
                 <h1>{{message.title}}</h1> 发件人：&emsp; <b>{{message.senderName || '系统'}}</b><br> 收件人：&emsp; <b>{{message.receiverName}}</b><br>
                 <span>
-                <i class="icon ion-clock"></i> {{ message.sendTime | timeAgo}}
+                <i class="icon ion-clock"></i> {{ message.sendTime | time}}
                 </span>
                 <hr>
             </div>

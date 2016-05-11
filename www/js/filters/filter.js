@@ -30,4 +30,19 @@
     };
   }])
 
+  //显示时间
+  .filter('time', function () {
+    return function (time) {
+      return time.replace("T", " ");
+    };
+  })
 
+  //显示生日
+  .filter('birthday', function () {
+    return function (time) {
+      if (time)
+      return time.replace("T00:00:00", "");
+      else 
+      return "未填";
+    };
+  })

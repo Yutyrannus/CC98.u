@@ -133,6 +133,6 @@
     //令牌到期后自动刷新
     var interval = $interval(function () {
       refreshToken();
-    }, 1199000);
+    }, 1140000);
 
   });
