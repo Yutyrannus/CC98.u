@@ -199,6 +199,10 @@ img{
   font-size: 25px;
   color: rgba(68,68,68,1);
 }
+
+.topicCard{
+  padding: 16px
+}
 /*
 ion-content.scroll-content.ionic-scroll.has-header{
   background-color: rgba(49, 175, 213, 0.28);

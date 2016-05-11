@@ -5,12 +5,12 @@
   <ion-content data-ng-init="doRefresh()">
     <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
     </ion-refresher>
-    <ion-item class="card list ink ink-dark item-text-wrap" ng-repeat="topicItem in topic" href="">
+    <ion-item class="item card list item-text-wrap topicCard" ng-repeat="topicItem in topic">
       <div class="card-header" ng-if="topicItem.title">
         <strong>{{topicItem.title}}</strong>
       </div>
       <div class="item item-avatar" ng-if="topicItem.userInfo.portraitUrl">
-        <img src="{{topicItem.userInfo.portraitUrl || 'img/user.jpg'}}">
+        <img ng-src="{{topicItem.userInfo.portraitUrl || 'img/user.jpg'}}"   ui-sref="app.userInfo({id: topicItem.userId})">
         <h2>{{ topicItem.userName ||'匿名' }}&nbsp;&nbsp;
           <span ng-bind-html="topicItem.userInfo.gender | gender"></span>
             <span class="pull-right">

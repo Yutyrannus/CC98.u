@@ -1,0 +1,25 @@
+<ion-view view-title="用户信息">
+  <button id="fab" class="button button-{{theme}} button-fab ink topicfab" ng-click="post()">
+      <i class="icon ion-paper-airplane"></i>
+    </button>
+  <ion-content data-ng-init="doRefresh()">
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list class="card">
+      <ion-item class="full-image"><img ng-src="{{user.portraitUrl}}"></ion-item>
+      <ion-item>用户名称： {{user.name}}</ion-item>
+      <ion-item>用户头衔： {{user.title}}</ion-item>
+      <ion-item>用户等级： {{user.level}}</ion-item>
+      <ion-item>帖数总数： {{user.postCount}}</ion-item>
+      <ion-item>用户威望： {{user.prestige}}</ion-item>
+      <ion-item>用户门派： {{user.faction}}</ion-item>
+      <ion-item>用户组： {{user.groupName}}</ion-item>
+      <ion-item>注册时间： {{user.registerTime | time}}</ion-item>
+      <ion-item>性别： <span ng-bind-html="user.gender | gender"></span></ion-item>
+      <ion-item>生日： {{user.birthday | birthday}}</ion-item>
+      <ion-item>邮件： {{user.emailAddress || "未填"}}</ion-item>
+      <ion-item>主页： {{user.homePageUrl || "未填"}}</ion-item>
+      <ion-item>QQ： {{user.qq || "未填"}}</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

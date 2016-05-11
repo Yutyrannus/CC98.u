@@ -128,7 +128,17 @@
           }
         }
       })
-
+      
+      .state('app.userInfo', {
+        url: '/userInfo/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/userInfo.html',
+            controller: 'userInfoCtrl'
+          }
+        }
+      })
+      
       .state('app.myBoard', {
         url: '/myBoard',
         views: {
