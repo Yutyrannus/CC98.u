@@ -13,10 +13,16 @@
         <img src="{{topicItem.userInfo.portraitUrl || 'img/user.jpg'}}">
         <h2>{{ topicItem.userName ||'匿名' }}&nbsp;&nbsp;
           <span ng-bind-html="topicItem.userInfo.gender | gender"></span>
+            <span class="pull-right">
+              <i class="icon ion-share quoteIcon" ng-click="quote($index)"></i>
+            </span>
           </h2>
       </div>
       <div class="card-header" ng-if="!topicItem.userInfo.portraitUrl">
         <i class="icon ion-person"></i> {{ topicItem.userName ||'匿名' }}
+        <span class="pull-right">
+          <i class="icon ion-share quoteIcon" ng-click="quote($index)"></i>
+        </span>
       </div>
       <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | ubb"></pre>
       </div>

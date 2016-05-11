@@ -123,7 +123,6 @@ app.controller('topicCtrl',
     }
 
     //回帖
-    $scope.postData = {};
     $ionicModal.fromTemplateUrl('templates/postTopic.html', {
       scope: $scope
     }).then(function (modal) {
@@ -135,6 +134,7 @@ app.controller('topicCtrl',
     };
 
     $scope.post = function () {
+      $scope.postData = {};
       $scope.popover.hide();
       $scope.modal.show();
     };
@@ -149,7 +149,24 @@ app.controller('topicCtrl',
           alert(response.data.message);
         })
     };
-
+    
+    //引用
+    $scope.quote = function (index) {
+      $scope.postData = {};
+      $scope.modal.show();
+      $scope.postData.content = "[quotex][b]以下是引用[i]" +
+                                ($scope.topic[index].userName || "匿名") +
+                                "在" +
+                                $scope.topic[index].time.replace("T", " ") +
+                                "[/i]的发言：[/b]" +
+                                "\r\n" +
+                                $scope.topic[index].content +
+                                "\r\n" +
+                                "[/quotex]" +
+                                "\r\n";
+      
+    };
+    
     //popover
     $ionicPopover.fromTemplateUrl('templates/popover/popover.html', {
       scope: $scope

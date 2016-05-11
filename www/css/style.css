@@ -194,6 +194,11 @@ img{
 .popup-body{
   text-align:center;
 }
+
+.quoteIcon{
+  font-size: 25px;
+  color: rgba(68,68,68,1);
+}
 /*
 ion-content.scroll-content.ionic-scroll.has-header{
   background-color: rgba(49, 175, 213, 0.28);
