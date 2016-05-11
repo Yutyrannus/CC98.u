@@ -6,20 +6,20 @@
     <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
     </ion-refresher>
     <ion-list class="card">
-      <ion-item class="full-image"><img ng-src="{{user.portraitUrl}}"></ion-item>
-      <ion-item>用户名称： {{user.name}}</ion-item>
-      <ion-item>用户头衔： {{user.title}}</ion-item>
-      <ion-item>用户等级： {{user.level}}</ion-item>
-      <ion-item>帖数总数： {{user.postCount}}</ion-item>
-      <ion-item>用户威望： {{user.prestige}}</ion-item>
-      <ion-item>用户门派： {{user.faction}}</ion-item>
-      <ion-item>用户组： {{user.groupName}}</ion-item>
-      <ion-item>注册时间： {{user.registerTime | time}}</ion-item>
-      <ion-item>性别： <span ng-bind-html="user.gender | gender"></span></ion-item>
-      <ion-item>生日： {{user.birthday | birthday}}</ion-item>
-      <ion-item>邮件： {{user.emailAddress || "未填"}}</ion-item>
-      <ion-item>主页： {{user.homePageUrl || "未填"}}</ion-item>
-      <ion-item>QQ： {{user.qq || "未填"}}</ion-item>
+      <ion-item class="full-image avatarImage"><img ng-src="{{userInfo.portraitUrl}}"></ion-item>
+      <ion-item>用户名称： {{userInfo.name}}</ion-item>
+      <ion-item>用户头衔： {{userInfo.title}}</ion-item>
+      <ion-item>用户等级： {{userInfo.level}}</ion-item>
+      <ion-item>帖数总数： {{userInfo.postCount}}</ion-item>
+      <ion-item>用户威望： {{userInfo.prestige}}</ion-item>
+      <ion-item>用户门派： {{userInfo.faction}}</ion-item>
+      <ion-item>用户组： {{userInfo.groupName}}</ion-item>
+      <ion-item>注册时间： {{userInfo.registerTime | time}}</ion-item>
+      <ion-item>性别： <span ng-bind-html="userInfo.gender | gender"></span></ion-item>
+      <ion-item>生日： {{userInfo.birthday | birthday}}</ion-item>
+      <ion-item>邮件： {{userInfo.emailAddress || "未填"}}</ion-item>
+      <ion-item>主页： {{userInfo.homePageUrl || "未填"}}</ion-item>
+      <ion-item>QQ： {{userInfo.qq || "未填"}}</ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

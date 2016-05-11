@@ -1,20 +1,16 @@
 ﻿<ion-view view-title="热门话题">
-    <ion-content data-ng-init="doRefresh()">
-        <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
-        </ion-refresher>
-        
-            <ion-item class="card  ink ink-dark item-text-wrap" ng-repeat="x in hot" href="#/app/topic/{{x.id}}&{{x.title}}&replyCount={{x.replyCount}}">
-                
-                    {{ x.title }}
-                    <div class="card-footer text-right">
-                        <i class="icon ion-ios-browsers"></i> {{ x.boardName}}
+  <ion-content data-ng-init="doRefresh()">
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
+    </ion-refresher>
 
-                        <div class="pull-left">
-                            <i class="icon ion-person"></i> {{ x.authorName ||'匿名' }}
-                        </div>
-                    </div>
-                   
-            </ion-item>
-            
-    </ion-content>
+    <ion-item class="card  ink ink-dark item-text-wrap androidFix" ng-repeat="x in hot" href="#/app/topic/{{x.id}}&{{x.title}}&replyCount={{x.replyCount}}">
+      {{ x.title }}
+      <div class="card-footer text-right">
+        <i class="icon ion-ios-browsers"></i> {{ x.boardName}}
+        <div class="pull-left">
+          <i class="icon ion-person"></i> {{ x.authorName ||'匿名' }}
+        </div>
+      </div>
+    </ion-item>
+  </ion-content>
 </ion-view>

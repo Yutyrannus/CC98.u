@@ -157,7 +157,7 @@ app.controller('topicCtrl',
       $scope.postData.content = "[quotex][b]以下是引用[i]" +
                                 ($scope.topic[index].userName || "匿名") +
                                 "在" +
-                                $scope.topic[index].time.replace("T", " ") +
+                                $scope.topic[index].time.replace("T", " ").replace("-", "/") +
                                 "[/i]的发言：[/b]" +
                                 "\r\n" +
                                 $scope.topic[index].content +

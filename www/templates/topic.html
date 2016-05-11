@@ -5,7 +5,7 @@
   <ion-content data-ng-init="doRefresh()">
     <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()">
     </ion-refresher>
-    <ion-item class="item card list item-text-wrap topicCard" ng-repeat="topicItem in topic">
+    <ion-item class="item card list item-text-wrap topicCard androidFix" ng-repeat="topicItem in topic">
       <div class="card-header" ng-if="topicItem.title">
         <strong>{{topicItem.title}}</strong>
       </div>

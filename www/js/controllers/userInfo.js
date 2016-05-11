@@ -6,7 +6,7 @@ app.controller('userInfoCtrl',
     $scope.doRefresh = function () {
       $http.get("http://api.cc98.org/user/" + id)
         .success(function (newItems) {
-          $scope.user = newItems;
+          $scope.userInfo = newItems;
         })
         .error(function (newItems) {
           alert("载入出错！");
@@ -30,7 +30,7 @@ app.controller('userInfoCtrl',
 
     $scope.post = function () {
       $scope.modal.show();
-      $scope.postData.receiverName = $scope.user.name;
+      $scope.postData.receiverName = $scope.userInfo.name;
     };
     $scope.doPost = function () {
       $http.post('http://api.cc98.org/message/', $scope.postData,

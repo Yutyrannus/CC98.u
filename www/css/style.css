@@ -49,8 +49,8 @@ img{
     /*background-color: rgba(255, 255, 255, 0.6);*/
     padding: 16px;
 }
-.platform-android .item-complex .item-content, .item-radio .item-content{
-    padding-right: 24px;
+.platform-android .androidFix{
+  width: 96%;
 }
 
 .boardRoot{
@@ -81,9 +81,7 @@ img{
 */
 .card .item.item-avatar{
     min-height: 0px;
-    padding-left: 75px;
-    padding-top: 22px;
-    padding-bottom: 33px;
+    padding: 22px 0px 33px 75px;
 }
 
 .item-avatar>img:first-child{
@@ -202,6 +200,10 @@ img{
 
 .topicCard{
   padding: 16px
+}
+
+.avatarImage{
+  text-align: center!important;
 }
 /*
 ion-content.scroll-content.ionic-scroll.has-header{
