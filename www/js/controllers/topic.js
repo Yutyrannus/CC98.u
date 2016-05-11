@@ -10,14 +10,13 @@ app.controller('topicCtrl',
     $ionicPopover,
     $ionicPopup,
     $ionicNavBarDelegate,
-    $ionicScrollDelegate ) {
-      
+    $ionicScrollDelegate) {
+
     $scope.topic = {};
     $scope.noMore = undefined;
     $scope.topicTitle = $stateParams.topicTitle;
     var replyCount = parseInt($stateParams.replyCount);
     var topicId = $stateParams.id;
-    $scope.topicId = topicId;
 
     $scope.setTitle = function () {
       $ionicNavBarDelegate.title($scope.topic[0].title);
@@ -43,7 +42,7 @@ app.controller('topicCtrl',
 
     //加载更多帖子
     $scope.loadMore = function () {
-      var topicLength = $scope.topic[0].floor + $scope.topic.length -1;
+      var topicLength = $scope.topic[0].floor + $scope.topic.length - 1;
       $http.get('http://api.cc98.org/post/topic/' + topicId + '?from=' + topicLength + '&to=' + (topicLength + 9),
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(newItems) {
@@ -74,7 +73,7 @@ app.controller('topicCtrl',
       $scope.popover.hide();
       $ionicPopup.prompt({
         title: '输入要跳转的楼层',
-        template: '共' + (replyCount+1) + '楼',
+        template: '共' + (replyCount + 1) + '楼',
         inputPlaceholder: '',
         cancelText: '取消',
         okText: '确定',
@@ -149,24 +148,24 @@ app.controller('topicCtrl',
           alert(response.data.message);
         })
     };
-    
+
     //引用
     $scope.quote = function (index) {
       $scope.postData = {};
       $scope.modal.show();
       $scope.postData.content = "[quotex][b]以下是引用[i]" +
-                                ($scope.topic[index].userName || "匿名") +
-                                "在" +
-                                $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
-                                "[/i]的发言：[/b]" +
-                                "\r\n" +
-                                $scope.topic[index].content +
-                                "\r\n" +
-                                "[/quotex]" +
-                                "\r\n";
-      
+        ($scope.topic[index].userName || "匿名") +
+        "在" +
+        $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
+        "[/i]的发言：[/b]" +
+        "\r\n" +
+        $scope.topic[index].content +
+        "\r\n" +
+        "[/quotex]" +
+        "\r\n";
+
     };
-    
+
     //popover，用于显示右下的多个fab按钮
     $ionicPopover.fromTemplateUrl('templates/popover/popover.html', {
       scope: $scope

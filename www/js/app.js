@@ -100,7 +100,7 @@
       })
 
       .state('app.topic', {
-        url: '/topic/:id&*topicTitle&replyCount=:replyCount',
+        url: '/topic/:id&replyCount=:replyCount&title=*topicTitle',
         views: {
           'menuContent': {
             templateUrl: 'templates/topic.html',
