@@ -10,7 +10,6 @@ app.controller('messageCtrl',
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(response) {
           $scope.message = response.data;
-          $scope.ubb();
           $scope.getReceiverName();
         }, function errorCallback(response) {
           alert(response.data.message);

@@ -10,15 +10,13 @@
             <div class="card-header">
                 <h1>{{message.title}}</h1> 发件人：&emsp; <b>{{message.senderName || '系统'}}</b><br> 收件人：&emsp; <b>{{message.receiverName}}</b><br>
                 <span>
-                <i class="icon ion-clock"></i> {{ message.sendTime}}
+                <i class="icon ion-clock"></i> {{ message.sendTime | timeAgo}}
                 </span>
                 <hr>
             </div>
             <div>
-                <pre id={{topicId}}topic{{message.floor-1}} ng-bind-html="message.content | ubb"></pre>
+                <pre ng-bind-html="message.content | ubb"></pre>
             </div>
         </ion-item>
-        <ion-infinite-scroll ng-if="topics.length % 10 == 0" on-infinite="loadMore()" distance="5%">
-        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

@@ -8,7 +8,7 @@
         <ion-item class="card ink ink-dark item-text-wrap" ng-class="{unReadReceive: !receive.isRead}" ng-repeat="receive in receives" href="#/app/message/{{receive.id}}">
             {{ receive.title }}
             <div class="card-footer text-right">
-                <i class="icon ion-clock"></i> {{receive.sendTime}}
+                <i class="icon ion-clock"></i> {{receive.sendTime | timeAgo}}
 
                 <div class="pull-left">
                     <i class="icon ion-person"></i> {{ receive.senderName ||'系统' }}
