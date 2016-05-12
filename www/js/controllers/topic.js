@@ -158,10 +158,11 @@ app.controller('topicCtrl',
       else alert("内容不能为空！");
     };
 
-    //引用(更新为md格式)
+    //引用(应用格式与原帖格式相同)
     $scope.quote = function (index) {
       $scope.postData = {};
       $scope.modal.show();
+      if ($scope.topic[index].contentType){
       $scope.postData.contentType = 1;
       $scope.postData.content = "> *以下是引用 **" +
         ($scope.topic[index].userName || "匿名用户") +
@@ -171,6 +172,17 @@ app.controller('topicCtrl',
         "\r\n> " +
         $scope.topic[index].content.replace(/\n|\r\n/g, "\r\n> ") +
         "\r\n\r\n";
+      }
+      else {
+        $scope.postData.contentType = 0;
+        $scope.postData.content = "[quotex][b]以下是引用[i]" +
+                    ($scope.topic[index].userName || "匿名") +
+                     "在" +
+                      $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
+                      "[/i]的发言：[/b]\r\n" +
+                      $scope.topic[index].content +
+                      "\r\n[/quotex]\r\n"
+      }
     };
 
     //popover，用于显示右下的多个fab按钮
