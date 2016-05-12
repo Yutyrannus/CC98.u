@@ -128,7 +128,7 @@
           }
         }
       })
-      
+
       .state('app.userInfo', {
         url: '/userInfo/:id',
         views: {
@@ -138,7 +138,7 @@
           }
         }
       })
-      
+
       .state('app.myBoard', {
         url: '/myBoard',
         views: {
@@ -193,7 +193,17 @@
         url: '/setting',
         views: {
           'menuContent': {
-            templateUrl: 'templates/setting.html',
+            templateUrl: 'templates/setting/setting.html',
+            controller: 'settingCtrl'
+          }
+        }
+      })
+      
+      .state('app.theme', {
+        url: '/theme',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/setting/theme.html',
             controller: 'settingCtrl'
           }
         }

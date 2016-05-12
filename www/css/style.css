@@ -210,4 +210,38 @@ ion-content.scroll-content.ionic-scroll.has-header{
   background-color: rgba(49, 175, 213, 0.28);
 }
 */
+.item p{
+  color : rgb(68,68,68);
+}
+.markdown-body ul{
+  list-style-type:disc;
+}
+.editormd-html-preview{
+  padding :14px 0 0 0;
+  line-height: 20px;
+  font-family: RobotoDraft,Roboto,"Helvetica Neue","Segoe UI",sans-serif;
+}
+.markdown-body {
+  color : rgb(68,68,68);
+  margin-bottom: 0;
+}
+.markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre{
+  margin-bottom: 0;
+}
+.editormd-html-preview pre{
+  background: #333;
+  color: #FFF;
+}
 
+.item-checkbox-markdown{
+  min-height: 30px!important;
+  padding: 5px 16px 5px 60px;
+}
+.markdown-icon{
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.postTitle{
+  margin-left: 20px;
+}

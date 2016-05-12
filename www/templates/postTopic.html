@@ -3,25 +3,41 @@
 		<button class="button button-clear" ng-click="closePost()">
           <i class="icon ion-close"></i>
       </button>
-		<h1 class="title">回复主题</h1>
+		<h1 class="title" ng-if="!isPreview">回复主题</h1>
+		<h1 class="title" ng-if="isPreview">Markdown预览</h1>
 		<div class="buttons">
+			<button class="button button-clear" ng-show="postData.contentType" ng-click="preview()">
+          <i class="icon ion-social-markdown"></i>
+		  &nbsp;
 			<button class="button button-clear" ng-click="doPost()">
           <i class="icon ion-checkmark"></i>
       </button>
 		</div>
 	</ion-header-bar>
 	<ion-content>
-		<form>
+		<form ng-if="!isPreview">
 			<div class="list">
 				<label class="item item-input">
           <input type="text" placeholder="标题（可不填）" ng-model="postData.title">
         </label>
+				<ion-checkbox class="checkbox-{{theme}} item-checkbox-markdown" ng-model="postData.contentType" ng-true-value="1" ng-false-value="0">
+					<span class="markdown-icon"><i class="icon ion-social-markdown"></i>&nbsp;Markdown</span>
+				</ion-checkbox>
 				<hr/>
 				<label class="item item-input">          
           <textarea type="text" placeholder="内容" ng-model="postData.content" rows="20">
 					</textarea>
-        </label>				
+        </label>
 			</div>
 		</form>
+
+		<!-- markdown预览界面 -->
+		<div ng-if="isPreview">
+			<h2 class="postTitle">{{postData.title}}</h2>
+			<div class="item card list item-text-wrap topicCard">
+				<div class="md-read markdown-body editormd-html-preview" ng-bind-html="postData.content | markdown">
+				</div>
+			</div>
+		</div>
 	</ion-content>
 </ion-modal-view>

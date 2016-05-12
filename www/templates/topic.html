@@ -24,7 +24,7 @@
           <i class="icon ion-share quoteIcon" ng-click="quote($index)"></i>
         </span>
       </div>
-      <pre id={{topicId}}topic{{topicItem.floor-1}} ng-bind-html="topicItem.content | ubb"></pre>
+      <div class="md-read markdown-body editormd-html-preview" ng-bind-html="topicItem.content | markdown | ubb"></div>
       </div>
       <div class="card-footer text-right">
         <i class="icon ion-clock"></i> {{ topicItem.time | timeAgo}}

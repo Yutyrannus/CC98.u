@@ -1,4 +1,5 @@
-﻿angular.module('cc98.filters', [])
+﻿angular.module('cc98.filters', [
+  'hc.marked'])
 
   //判断性别，输出图标
   .filter('gender', function () {
@@ -47,3 +48,41 @@
         return "未填";
     };
   })
+
+  .config(['markedProvider', function (markedProvider) {
+    markedProvider.setRenderer({
+      link: function (href, title, text) {
+        return href;
+      }
+    });
+    /*
+    markedProvider.setRenderer({
+      paragraph: function (text) {
+        return text;
+      }
+    });
+*/
+    markedProvider.setOptions({
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false,
+      highlight: function (code, lang) {
+        if (lang) {
+          if (lang != "shell")
+            return hljs.highlight(lang, code, true).value;
+          else return hljs.highlightAuto(code).value;
+        } else {
+          return hljs.highlightAuto(code).value;
+        }
+      }
+    });
+  }])
+  .filter('markdown', ['marked', function (marked) {
+    return function (content) {
+      return marked(content);
+    }
+  }])

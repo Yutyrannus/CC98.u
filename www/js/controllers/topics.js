@@ -35,33 +35,41 @@ app.controller('topicsCtrl',
           $scope.$broadcast('scroll.infiniteScrollComplete');
         })
 
-        };
+    };
 
     //发帖
     $scope.postData = {};
-    $ionicModal.fromTemplateUrl('templates/post.html', {
+    $scope.preview = function () {
+      $scope.isPreview = !$scope.isPreview;
+    }
+    $ionicModal.fromTemplateUrl('templates/postTopics.html', {
       scope: $scope
     }).then(function (modal) {
       $scope.modal = modal;
     });
 
     $scope.closePost = function () {
+      $scope.isPreview = false;
       $scope.modal.hide();
     };
 
     $scope.post = function () {
       $scope.modal.show();
+      $scope.postData = {};
+      $scope.isPreview = false;
     };
     $scope.doPost = function () {
-      $http.post('http://api.cc98.org/topic/board/' + topicsId, $scope.postData,
-        { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
-        .then(function successCallback(response) {
-          alert("发帖成功！");
-          $scope.closePost();
-          $scope.doRefresh();
-        }, function errorCallback(response) {
-          alert(response.data.message);
-        })
-    };
-    
+      if ($scope.postData.title && $scope.postData.content) {
+        $http.post('http://api.cc98.org/topic/board/' + topicsId, $scope.postData,
+          { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
+          .then(function successCallback(response) {
+            alert("发帖成功！");
+            $scope.closePost();
+            $scope.doRefresh();
+          }, function errorCallback(response) {
+            alert(response.data.message);
+          })
+      }
+      else alert("内容和标题都不能为空！");
+    }
   });

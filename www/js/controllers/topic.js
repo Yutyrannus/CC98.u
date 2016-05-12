@@ -122,6 +122,10 @@ app.controller('topicCtrl',
     }
 
     //回帖
+    $scope.postData = {};
+    $scope.preview = function () {
+      $scope.isPreview = !$scope.isPreview;
+    }
     $ionicModal.fromTemplateUrl('templates/postTopic.html', {
       scope: $scope
     }).then(function (modal) {
@@ -129,15 +133,18 @@ app.controller('topicCtrl',
     });
 
     $scope.closePost = function () {
+      $scope.isPreview = false;
       $scope.modal.hide();
     };
 
     $scope.post = function () {
       $scope.postData = {};
+      $scope.isPreview = false;
       $scope.popover.hide();
       $scope.modal.show();
     };
     $scope.doPost = function () {
+      if ($scope.postData.content){
       $http.post('http://api.cc98.org/post/topic/' + topicId, $scope.postData,
         { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
         .then(function successCallback(response) {
@@ -147,23 +154,23 @@ app.controller('topicCtrl',
         }, function errorCallback(response) {
           alert(response.data.message);
         })
+      }
+      else alert("内容不能为空！");
     };
 
-    //引用
+    //引用(更新为md格式)
     $scope.quote = function (index) {
       $scope.postData = {};
       $scope.modal.show();
-      $scope.postData.content = "[quotex][b]以下是引用[i]" +
-        ($scope.topic[index].userName || "匿名") +
-        "在" +
+      $scope.postData.contentType = 1;
+      $scope.postData.content = "> *以下是引用 **" +
+        ($scope.topic[index].userName || "匿名用户") +
+        "** 在 **" +
         $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
-        "[/i]的发言：[/b]" +
-        "\r\n" +
-        $scope.topic[index].content +
-        "\r\n" +
-        "[/quotex]" +
-        "\r\n";
-
+        "** 的发言：*" +
+        "\r\n> " +
+        $scope.topic[index].content.replace(/\n|\r\n/g, "\r\n> ") +
+        "\r\n\r\n";
     };
 
     //popover，用于显示右下的多个fab按钮
