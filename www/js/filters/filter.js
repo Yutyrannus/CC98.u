@@ -50,12 +50,13 @@
   })
 
   .config(['markedProvider', function (markedProvider) {
+    /*
     markedProvider.setRenderer({
       link: function (href, title, text) {
         return href;
       }
     });
-    /*
+    
     markedProvider.setRenderer({
       paragraph: function (text) {
         return text;

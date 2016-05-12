@@ -225,9 +225,10 @@ ion-content.scroll-content.ionic-scroll.has-header{
   color : rgb(68,68,68);
   margin-bottom: 0;
 }
+/*
 .markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre{
   margin-bottom: 0;
-}
+}*/
 .editormd-html-preview pre{
   background: #333;
   color: #FFF;
