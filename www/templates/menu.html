@@ -21,31 +21,31 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-                <ion-item menu-close ng-click="cc98Login()" ng-if="token == undefined">
+                <ion-item class="item-icon-left" menu-close ng-click="cc98Login()" ng-if="token == undefined">
                     <i class="icon ion-person menu-icon"></i>&emsp;&emsp;登录
                 </ion-item>
-                <ion-item menu-close ng-click="logOut()" ng-if="token != undefined">
+                <ion-item class="item-icon-left" menu-close ng-click="logOut()" ng-if="token != undefined">
                     <i class="icon ion-person menu-icon"></i>&emsp;&emsp;注销
                 </ion-item>
-                <ion-item menu-close href="#/app/myBoard">
+                <ion-item class="item-icon-left" menu-close href="#/app/myBoard">
                     <i class="icon ion-home menu-icon"></i>&emsp;&emsp;我的版面
                 </ion-item>
-                <ion-item menu-close href="#/app/new">
+                <ion-item class="item-icon-left" menu-close href="#/app/new">
                     <i class="icon ion-leaf menu-icon"></i>&emsp;&emsp;查看新帖
                 </ion-item>
-                <ion-item menu-close href="#/app/hot">
+                <ion-item class="item-icon-left" menu-close href="#/app/hot">
                     <i class="icon ion-flame menu-icon"></i>&emsp;&emsp;热门话题
                 </ion-item>
-                <ion-item menu-close href="#/app/boardRoot">
+                <ion-item class="item-icon-left" menu-close href="#/app/boardRoot">
                     <i class="icon ion-ios-browsers menu-icon"></i>&emsp;&emsp;板块列表
                 </ion-item>
-                <ion-item menu-close href="#/app/me">
+                <ion-item class="item-icon-left" menu-close href="#/app/me">
                     <i class="icon ion-ios-paper menu-icon"></i>&emsp;&emsp;个人信息
                 </ion-item>
-                <ion-item menu-close ui-sref="app.receive">
+                <ion-item class="item-icon-left" menu-close ui-sref="app.receive">
                     <i class="icon ion-email menu-icon"></i>&emsp;&emsp;短消息
                 </ion-item>
-                <ion-item menu-close ui-sref="app.setting">
+                <ion-item class="item-icon-left" menu-close ui-sref="app.setting">
                     <i class="icon ion-android-settings menu-icon"></i>&emsp;&emsp;设置
                 </ion-item>
             </ion-list>

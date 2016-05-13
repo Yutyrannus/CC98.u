@@ -198,7 +198,7 @@
           }
         }
       })
-      
+
       .state('app.theme', {
         url: '/theme',
         views: {
@@ -208,6 +208,17 @@
           }
         }
       })
+
+      .state('app.about', {
+        url: '/about',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/setting/about.html',
+            controller: 'settingCtrl'
+          }
+        }
+      })
+
       ;
 
     $urlRouterProvider.otherwise('/app/boardRoot');

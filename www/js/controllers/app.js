@@ -85,6 +85,7 @@
           .error(function (response) {
             storage.remove('userInfo');
             $rootScope.user = {};
+            $rootScope.token = undefined;
             alert("刷新令牌出错，请重新登录");            
           })
       }

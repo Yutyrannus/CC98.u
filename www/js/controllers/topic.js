@@ -122,10 +122,14 @@ app.controller('topicCtrl',
     }
 
     //回帖
+    var isQuote = false;
+    var indexNum;
     $scope.postData = {};
+    //是否markdown预览模式
     $scope.preview = function () {
       $scope.isPreview = !$scope.isPreview;
     }
+
     $ionicModal.fromTemplateUrl('templates/postTopic.html', {
       scope: $scope
     }).then(function (modal) {
@@ -140,51 +144,63 @@ app.controller('topicCtrl',
     $scope.post = function () {
       $scope.postData = {};
       $scope.isPreview = false;
+      isQuote = false;
       $scope.popover.hide();
       $scope.modal.show();
     };
     $scope.doPost = function () {
-      if ($scope.postData.content){
-      $http.post('http://api.cc98.org/post/topic/' + topicId, $scope.postData,
-        { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
-        .then(function successCallback(response) {
-          alert("回帖成功！");
-          $scope.closePost();
-          $scope.loadMore();
-        }, function errorCallback(response) {
-          alert(response.data.message);
-        })
+      if ($scope.postData.content) {
+        $http.post('http://api.cc98.org/post/topic/' + topicId, $scope.postData,
+          { headers: { 'Authorization': 'Bearer ' + $rootScope.token } })
+          .then(function successCallback(response) {
+            alert("回帖成功！");
+            $scope.closePost();
+            $scope.loadMore();
+          }, function errorCallback(response) {
+            alert(response.data.message);
+          })
       }
       else alert("内容不能为空！");
     };
 
-    //引用(应用格式与原帖格式相同)
+    //引用(默认格式与原帖格式相同)
     $scope.quote = function (index) {
       $scope.postData = {};
+      isQuote = true;
+      indexNum = index;
       $scope.modal.show();
-      if ($scope.topic[index].contentType){
-      $scope.postData.contentType = 1;
-      $scope.postData.content = "> *以下是引用 **" +
-        ($scope.topic[index].userName || "匿名用户") +
-        "** 在 **" +
-        $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
-        "** 的发言：*" +
-        "\r\n> " +
-        $scope.topic[index].content.replace(/\n|\r\n/g, "\r\n> ") +
-        "\r\n\r\n";
+      quoteTex(index, $scope.topic[index].contentType);
+    };
+    var quoteTex = function (index, contentType) {
+      if (contentType) {
+        $scope.postData.contentType = 1;
+        $scope.postData.content = "> *以下是引用 **" +
+          ($scope.topic[index].userName || "匿名用户") +
+          "** 在 **" +
+          $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
+          "** 的发言：*" +
+          "\r\n> " +
+          $scope.topic[index].content.replace(/\n|\r\n/g, "\r\n> ") +
+          "\r\n\r\n";
       }
       else {
         $scope.postData.contentType = 0;
         $scope.postData.content = "[quotex][b]以下是引用[i]" +
-                    ($scope.topic[index].userName || "匿名") +
-                     "在" +
-                      $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
-                      "[/i]的发言：[/b]\r\n" +
-                      $scope.topic[index].content +
-                      "\r\n[/quotex]\r\n"
+          ($scope.topic[index].userName || "匿名") +
+          "在" +
+          $scope.topic[index].time.replace("T", " ").replace(/-/g, "/") +
+          "[/i]的发言：[/b]\r\n" +
+          $scope.topic[index].content +
+          "\r\n[/quotex]\r\n"
       }
-    };
-
+    }
+    //如果是引用状态，更改发帖格式也会更改引用格式
+    $scope.changeForm = function () {
+      if (isQuote) {
+        quoteTex(indexNum, $scope.postData.contentType);
+      }
+    }
+    
     //popover，用于显示右下的多个fab按钮
     $ionicPopover.fromTemplateUrl('templates/popover/popover.html', {
       scope: $scope

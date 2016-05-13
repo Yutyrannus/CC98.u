@@ -62,10 +62,11 @@ img{
   width: 47.5%;
 }
 
-.menu-icon{
-    font-size: 150%;
+.item-icon-left .menu-icon{
+    font-size: 25px;
     vertical-align: middle;
-    margin: 0 10px 0 10px;
+    margin: 0 7px 0 7px;
+    top: -2px;
 }
 
 .unReadReceive{
@@ -217,7 +218,7 @@ ion-content.scroll-content.ionic-scroll.has-header{
   list-style-type:disc;
 }
 .editormd-html-preview{
-  padding :14px 0 0 0;
+  padding :14px 0 14px 0;
   line-height: 20px;
   font-family: RobotoDraft,Roboto,"Helvetica Neue","Segoe UI",sans-serif;
 }
