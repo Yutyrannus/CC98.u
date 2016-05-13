@@ -66,7 +66,7 @@
     markedProvider.setOptions({
       gfm: true,
       tables: true,
-      breaks: false,
+      breaks: true,
       pedantic: false,
       sanitize: true,
       smartLists: true,
