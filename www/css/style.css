@@ -247,3 +247,9 @@ ion-content.scroll-content.ionic-scroll.has-header{
 .postTitle{
   margin-left: 20px;
 }
+
+.theme-icon{
+  font-size: 150%;
+  vertical-align: middle;
+  margin: 0 10px 0 10px;
+}

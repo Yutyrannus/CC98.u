@@ -173,7 +173,7 @@
         url: '/chat',
         views: {
           'menuContent': {
-            templateUrl: 'templates/messages/chat.html',
+            templateUrl: 'templates/chat.html',
             controller: 'chatCtrl'
           }
         }
