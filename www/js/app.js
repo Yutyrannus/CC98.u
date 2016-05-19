@@ -169,16 +169,6 @@
         }
       })
 
-      .state('app.chat', {
-        url: '/chat',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/chat.html',
-            controller: 'chatCtrl'
-          }
-        }
-      })
-
       .state('app.message', {
         url: '/message/:messageId',
         views: {
@@ -215,6 +205,26 @@
           'menuContent': {
             templateUrl: 'templates/setting/about.html',
             controller: 'settingCtrl'
+          }
+        }
+      })
+
+      .state('app.chat', {
+        url: '/chat/:groupName',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/chat/chat.html',
+            controller: 'groupsCtrl'
+          }
+        }
+      })
+
+      .state('app.groups', {
+        url: '/groups',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/chat/groups.html',
+            controller: 'groupsCtrl'
           }
         }
       })

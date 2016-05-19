@@ -1,0 +1,38 @@
+angular.module('cc98.controllers')
+
+  .controller('chatCtrl',
+  function ($scope, $http, $rootScope, $stateParams) {
+    
+    var groupName = $stateParams.groupName;
+    
+    var chatHub = $.connection.messageHub;
+    $.connection.hub.url = "https://api.cc98.org/signalR";
+    $.connection.hub.qs = { Authorization: "Bearer " + $rootScope.token };
+    
+    $scope.group = {};
+    
+    $scope.enter = function () {
+      chatHub.server.enterGroup(groupName).done(function (){
+        console.debug("enter success");
+      });
+    }
+    
+    $scope.sendGroupMessage = function (content) {
+      if (content){
+        chatHub.serve.sendGroupMessage(groupName, content)
+      }
+      else
+        alert("内容不能为空");
+    }
+
+    chatHub.client.newGroupMessage = function (groupName, b, c){
+      console.debug("newMess");
+      console.log(a + " " + b+" "+c);
+    }
+    
+    chatHub.client.newUserMessage = function (response){
+      console.debug("newUserMess");
+      console.log(response);
+    }
+    
+  });

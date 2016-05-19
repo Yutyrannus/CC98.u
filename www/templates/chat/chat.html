@@ -1,0 +1,11 @@
+<ion-view title="聊天">
+  <ion-content data-ng-init="enter()">
+
+    <ion-item class="card  ink ink-dark" ng-repeat="groupMsg in groupMsgs">
+      <h2><b>{{ groupMsg.name }}</b></h2>
+      <pre>{{groupMsg.content}}</pre>
+
+    </ion-item>
+    
+  </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-balanced">
+    <button class="button button-clear" ng-click="closeCreate()">
+          <i class="icon ion-close"></i>
+      </button>
+    <h1 class="title">创建讨论组</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="createGroup()">
+          <i class="icon ion-checkmark"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form>
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="讨论组 ID" ng-model="createGroupData.name">
+        </label>
+        <hr>
+
+        <label class="item item-input">
+          <input type="text" placeholder="标题" ng-model="createGroupData.title">
+        </label>
+
+        <hr>
+        <label class="item item-input">          
+          <textarea type="text" placeholder="描述" ng-model="createGroupData.description" rows="20">
+					</textarea>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

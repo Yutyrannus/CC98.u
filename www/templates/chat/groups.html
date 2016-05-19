@@ -1,0 +1,23 @@
+﻿<ion-view title="聊天">
+  <button class="button button-{{theme}} button-fab ink topicfab" ng-click="modalShow()">
+     <i class="icon ion-plus-round"></i>
+    </button>
+    
+  <ion-content data-ng-init="init()">
+    <ion-refresher pulling-text="下拉刷新..." on-refresh="getGroups()">
+    </ion-refresher>
+
+    <ion-item class="card  ink ink-dark" ng-repeat="group in groups" ui-sref="app.chat({groupName: group.name})">
+      <h2><b>{{ group.title || group.name }}</b></h2>
+      <p> id: {{group.name}}</p>
+      <pre>{{group.description}}</pre>
+      <div class="card-footer text-right">
+        成员: {{group.members.length}} &nbsp; 访客: {{group.guestCount}}
+        <div class="pull-left">
+          <i class="icon ion-person"></i> {{ group.managerName ||'匿名' }}
+        </div>
+      </div>
+    </ion-item>
+
+  </ion-content>
+</ion-view>
